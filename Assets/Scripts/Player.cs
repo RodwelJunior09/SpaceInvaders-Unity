@@ -1,18 +1,22 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections;
 using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    // Config Params
     [SerializeField] float speedOfPlayer = 10f;
     [SerializeField] float padding = 1f;
     [SerializeField] GameObject playerLaser;
+    [SerializeField] private float projectileSpeed = 1f;
+    [SerializeField] private float projectFirePeriod = 1f;
 
-    float xMin;
-    float xMax;
-    float yMin;
-    float yMax;
+    private Coroutine firingCourutine;
+
+    // Local Variables
+    private float xMin;
+    private float xMax;
+    private float yMin;
+    private float yMax;
 
     // Start is called before the first frame update
     void Start()
@@ -27,11 +31,26 @@ public class Player : MonoBehaviour
         Fire();
     }
 
+
     private void Fire()
     {
         if (Input.GetButtonDown("Fire1"))
         {
-            Instantiate(playerLaser, transform.position, Quaternion.identity);
+            firingCourutine = StartCoroutine(ContinousFire());
+        }
+        if (Input.GetButtonUp("Fire1"))
+        {
+            StopCoroutine(firingCourutine);   
+        }
+    }
+
+    private IEnumerator ContinousFire()
+    {
+        while (true)
+        {
+            var laser = Instantiate(playerLaser, transform.position, Quaternion.identity) as GameObject;
+            laser.GetComponent<Rigidbody2D>().velocity = new Vector2(0, projectileSpeed);
+            yield return new WaitForSeconds(projectFirePeriod);
         }
     }
 
