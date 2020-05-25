@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 8330790849078150878}
   - component: {fileID: 3176848663494413299}
   - component: {fileID: -6410564853251374089}
+  - component: {fileID: -6593872432925090612}
   m_Layer: 0
   m_Name: Projectile Sharp
   m_TagString: Untagged
@@ -103,3 +104,19 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!70 &-6593872432925090612
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9046354095825046819}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.0056459275, y: 0.010179872}
+  m_Size: {x: 0.09642057, y: 0.22759807}
+  m_Direction: 0

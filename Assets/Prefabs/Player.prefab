@@ -95,8 +95,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speedOfPlayer: 10
-  padding: 1
-  playerLaser: {fileID: 9046354095825046819, guid: 4dfd694b3ff0348d581972a412f60579,
+  _padding: 1
+  _playerLaser: {fileID: 9046354095825046819, guid: 4dfd694b3ff0348d581972a412f60579,
     type: 3}
   projectileSpeed: 5
   projectFirePeriod: 0.05
