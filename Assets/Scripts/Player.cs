@@ -4,8 +4,12 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     // Config Params
+    [Header("Player General Config")]
     [SerializeField] float speedOfPlayer = 10f;
     [SerializeField] float _padding = 1f;
+    [SerializeField] private int health = 200;
+
+    [Header("Projectile Config")]
     [SerializeField] private GameObject _playerLaser;
     [SerializeField] private float projectileSpeed = 1f;
     [SerializeField] private float projectFirePeriod = 1f;
@@ -50,6 +54,26 @@ public class Player : MonoBehaviour
             var laser = Instantiate(_playerLaser, transform.position, Quaternion.identity) as GameObject;
             laser.GetComponent<Rigidbody2D>().velocity = new Vector2(0, projectileSpeed);
             yield return new WaitForSeconds(projectFirePeriod);
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        var damageDealer = collision.GetComponent<DamageDealer>();
+        if (!damageDealer)
+        {
+            return;
+        }
+        HitProcess(damageDealer);
+    }
+
+    private void HitProcess(DamageDealer damageDealer)
+    {
+        health -= damageDealer.GetDamage();
+        damageDealer.Hit();
+        if (health <= 0)
+        {
+            Destroy(gameObject);
         }
     }
 
