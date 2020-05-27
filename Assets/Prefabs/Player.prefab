@@ -11,7 +11,8 @@ GameObject:
   - component: {fileID: 9052609718563458857}
   - component: {fileID: 9052609718563458854}
   - component: {fileID: 9052609718563458856}
-  m_Layer: 0
+  - component: {fileID: 139310233}
+  m_Layer: 8
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -26,7 +27,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9052609718563458855}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.5, y: -5.32, z: -4.42}
+  m_LocalPosition: {x: -0.5, y: -5.32, z: -2}
   m_LocalScale: {x: 2.8740199, y: 2.3283834, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -96,7 +97,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speedOfPlayer: 10
   _padding: 1
+  health: 200
   _playerLaser: {fileID: 9046354095825046819, guid: 4dfd694b3ff0348d581972a412f60579,
     type: 3}
   projectileSpeed: 5
-  projectFirePeriod: 0.05
+  projectFirePeriod: 0.5
+--- !u!58 &139310233
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9052609718563458855}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.24

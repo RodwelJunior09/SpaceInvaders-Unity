@@ -5,21 +5,21 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Enemy Wave Config")]
 public class WaveConfig : ScriptableObject
 {
-    [SerializeField] private GameObject enemyPrefab;
-    [SerializeField] private GameObject pathPrefab;
-    [SerializeField] private float timeBetweenSpawn = 0.5f;
-    [SerializeField] private float spawnRandomFactor = 0.3f;
-    [SerializeField] private int numberOfEnemies = 10;
-    [SerializeField] private float moveSpeed = 1f;
+    [SerializeField] private GameObject _enemyPrefab;
+    [SerializeField] private GameObject _pathPrefab;
+    [SerializeField] private float _timeBetweenSpawn = 0.5f;
+    [SerializeField] private float _spawnRandomFactor = 0.3f;
+    [SerializeField] private int _numberOfEnemies = 10;
+    [SerializeField] private float _moveSpeed = 1f;
 
     public GameObject GetEnemyPrefab()
     {
-        return enemyPrefab;
+        return _enemyPrefab;
     }
     public List<Transform> GetWayPoints()
     {
         var waveWayPoints = new List<Transform>();
-        foreach (Transform childTransform in pathPrefab.transform)
+        foreach (Transform childTransform in _pathPrefab.transform)
         {
             waveWayPoints.Add(childTransform);
         }
@@ -27,18 +27,18 @@ public class WaveConfig : ScriptableObject
     }
     public float GetTimeBetweenSpawn()
     {
-        return timeBetweenSpawn;
+        return _timeBetweenSpawn;
     }
     public float GetSpawnRandomFactor()
     {
-        return spawnRandomFactor;
+        return _spawnRandomFactor;
     }
     public int GetNumberOfEnemies()
     {
-        return numberOfEnemies;
+        return _numberOfEnemies;
     }
     public float GetMoveSpeed()
     {
-        return moveSpeed;
+        return _moveSpeed;
     }
 }

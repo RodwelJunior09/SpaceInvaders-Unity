@@ -12,7 +12,8 @@ GameObject:
   - component: {fileID: 3176848663494413299}
   - component: {fileID: -6410564853251374089}
   - component: {fileID: -6593872432925090612}
-  m_Layer: 0
+  - component: {fileID: 4555561132917728797}
+  m_Layer: 10
   m_Name: Projectile Sharp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -28,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 9046354095825046819}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.0025, y: -0.0665, z: 0}
-  m_LocalScale: {x: 1.2883613, y: 1.8578295, z: 1}
+  m_LocalScale: {x: 2.3351548, y: 4.5516825, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -114,9 +115,22 @@ CapsuleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0.0056459275, y: 0.010179872}
   m_Size: {x: 0.09642057, y: 0.22759807}
   m_Direction: 0
+--- !u!114 &4555561132917728797
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9046354095825046819}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dcc05c5177c907346bd69c92de6b9f03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 150
