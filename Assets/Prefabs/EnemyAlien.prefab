@@ -13,6 +13,8 @@ GameObject:
   - component: {fileID: 7501158660732754443}
   - component: {fileID: -5135725248657903003}
   - component: {fileID: 3601933220550359225}
+  - component: {fileID: 1092971186975140036}
+  - component: {fileID: -1185081232315961105}
   m_Layer: 9
   m_Name: EnemyAlien
   m_TagString: Untagged
@@ -108,16 +110,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e96f58541f548854aa94e1fef7b261ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 400
+  health: 300
   shotCounter: 0
   minBetweenShots: 0.2
   maxBetweenShots: 3
+  projectileSpeed: 5
+  durationExplosion: 1
   explosionGameObject: {fileID: 5254205660909648704, guid: bfda7d161d1b99547a8f136b70f08ad4,
     type: 3}
   enemyLaserPrefab: {fileID: 9046354095825046819, guid: e87eb1039074a864792e3a86a11414ca,
     type: 3}
-  projectileSpeed: 5
-  durationExplosion: 1
+  _laserAudioClip: {fileID: 8300000, guid: a0290cdbb8281cf4a86eb9be0aca71c2, type: 3}
+  _explosionAudioClip: {fileID: 8300000, guid: 0c5528c460717c44d9dd7c77cdc674d0, type: 3}
+  _laserVolume: 2
+  _explosionVolume: 2
 --- !u!58 &3601933220550359225
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -128,9 +134,43 @@ CircleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.21
+--- !u!50 &1092971186975140036
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8048610458644940618}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
+--- !u!114 &-1185081232315961105
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8048610458644940618}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dcc05c5177c907346bd69c92de6b9f03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 200

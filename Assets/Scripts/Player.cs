@@ -14,6 +14,16 @@ public class Player : MonoBehaviour
     [SerializeField] private float projectileSpeed = 1f;
     [SerializeField] private float projectFirePeriod = 1f;
 
+    [SerializeField] private GameObject _explosionGameObject;
+    [SerializeField] private float durationOfExplosion;
+
+    [Header("Player Sounds")]
+    [SerializeField] AudioClip _laserAudioClips;
+    [SerializeField] private AudioClip _explosionAudioClip;
+    [SerializeField, Range(1f, 10f)] private float _laserVolume = 2f;
+    [SerializeField, Range(1f, 10f)] private float _explosionVolume = 2f;
+
+
     private Coroutine _fireCoroutine;
 
     // Local Variables
@@ -53,6 +63,7 @@ public class Player : MonoBehaviour
         {
             var laser = Instantiate(_playerLaser, transform.position, Quaternion.identity) as GameObject;
             laser.GetComponent<Rigidbody2D>().velocity = new Vector2(0, projectileSpeed);
+            AudioSource.PlayClipAtPoint(_laserAudioClips, Camera.main.transform.position, _laserVolume);
             yield return new WaitForSeconds(projectFirePeriod);
         }
     }
@@ -73,8 +84,17 @@ public class Player : MonoBehaviour
         damageDealer.Hit();
         if (health <= 0)
         {
-            Destroy(gameObject);
+            Die();
         }
+    }
+
+    private void Die()
+    {
+        Destroy(gameObject);
+        GameObject vfxExplosion = Instantiate(_explosionGameObject, transform.position, transform.rotation);
+        AudioSource.PlayClipAtPoint(_explosionAudioClip, Camera.main.transform.position, _explosionVolume);
+        Destroy(vfxExplosion, durationOfExplosion);
+        FindObjectOfType<Level>().LoadGameOver();
     }
 
     private void Move()
