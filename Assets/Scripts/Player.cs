@@ -45,6 +45,11 @@ public class Player : MonoBehaviour
         Fire();
     }
 
+    public int GetPlayerHealth()
+    {
+        return health;
+    }
+
     private void Fire()
     {
         if (Input.GetButtonDown("Fire1"))
