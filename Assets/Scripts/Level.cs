@@ -22,6 +22,7 @@ public class Level : MonoBehaviour
 
     public void LoadFirstLevel()
     {
+        FindObjectOfType<GameStatus>().ResetGame();
         SceneManager.LoadScene("Lvl1");
     }
 
