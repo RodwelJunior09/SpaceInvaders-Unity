@@ -113,9 +113,10 @@ MonoBehaviour:
   health: 150
   shotCounter: 0
   minBetweenShots: 0.2
-  maxBetweenShots: 3
+  maxBetweenShots: 0.9
   projectileSpeed: 5
   durationExplosion: 1
+  scoreOfEnemyKilled: 10
   explosionGameObject: {fileID: 5254205660909648704, guid: bfda7d161d1b99547a8f136b70f08ad4,
     type: 3}
   enemyLaserPrefab: {fileID: 9046354095825046819, guid: e87eb1039074a864792e3a86a11414ca,

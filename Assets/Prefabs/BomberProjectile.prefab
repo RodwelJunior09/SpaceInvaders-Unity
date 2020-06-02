@@ -12,7 +12,8 @@ GameObject:
   - component: {fileID: 4856430163657362248}
   - component: {fileID: 7580663960080311286}
   - component: {fileID: -8377399855983794366}
-  m_Layer: 0
+  - component: {fileID: 5321773948565624815}
+  m_Layer: 11
   m_Name: BomberProjectile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -116,4 +117,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dcc05c5177c907346bd69c92de6b9f03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 200
+  damage: 250
+--- !u!70 &5321773948565624815
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7305515701264812951}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_Size: {x: 0.23, y: 1.96}
+  m_Direction: 0

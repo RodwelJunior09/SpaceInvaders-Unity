@@ -3,7 +3,7 @@
 public class Enemy : MonoBehaviour
 {
     [Header("Enemy Stats")]
-    [SerializeField] private float health = 800;
+    [SerializeField] private float health = 500;
     [SerializeField] private float shotCounter;
     [SerializeField] private float minBetweenShots = 0.2f;
     [SerializeField] private float maxBetweenShots = 3f;
@@ -23,13 +23,10 @@ public class Enemy : MonoBehaviour
     [SerializeField, Range(1f, 10f)] private float _laserVolume = 2f;
     [SerializeField, Range(1f, 10f)] private float _explosionVolume = 2f;
 
-    private GameStatus gameStatus;
-
     // Start is called before the first frame update
     void Start()
     {
         ResetShotCounter();
-        gameStatus = FindObjectOfType<GameStatus>();
     }
 
     // Update is called once per frame
@@ -80,10 +77,11 @@ public class Enemy : MonoBehaviour
         }
     }
 
+
     private void Die()
     {
         Destroy(gameObject);
-        gameStatus.AddToScore(scoreOfEnemyKilled);
+        FindObjectOfType<GameStatus>().AddToScore(scoreOfEnemyKilled);
         GameObject vfxExplosion = Instantiate(explosionGameObject, transform.position, transform.rotation);
         AudioSource.PlayClipAtPoint(_explosionAudioClip, Camera.main.transform.position, _explosionVolume);
         Destroy(vfxExplosion, durationExplosion);
