@@ -97,7 +97,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speedOfPlayer: 10
   _padding: 1
-  health: 200
+  health: 300
   _playerLaser: {fileID: 9046354095825046819, guid: 4dfd694b3ff0348d581972a412f60579,
     type: 3}
   projectileSpeed: 5
@@ -107,6 +107,8 @@ MonoBehaviour:
   durationOfExplosion: 0.5
   _laserAudioClips: {fileID: 8300000, guid: fa765c6c4a7461f428b26d7daf300fe9, type: 3}
   _explosionAudioClip: {fileID: 8300000, guid: 0c5528c460717c44d9dd7c77cdc674d0, type: 3}
+  _laserVolume: 2
+  _explosionVolume: 2
 --- !u!58 &139310233
 CircleCollider2D:
   m_ObjectHideFlags: 0

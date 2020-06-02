@@ -5,24 +5,22 @@ public class Player : MonoBehaviour
 {
     // Config Params
     [Header("Player General Config")]
-    [SerializeField] float speedOfPlayer = 10f;
     [SerializeField] float _padding = 1f;
-    [SerializeField] private int health = 200;
+    [SerializeField] private int health = 300;
+    [SerializeField] float speedOfPlayer = 10f;
+    [SerializeField] private float durationOfExplosion;
+    [SerializeField] private GameObject _explosionGameObject;
 
     [Header("Projectile Config")]
     [SerializeField] private GameObject _playerLaser;
     [SerializeField] private float projectileSpeed = 1f;
     [SerializeField] private float projectFirePeriod = 1f;
 
-    [SerializeField] private GameObject _explosionGameObject;
-    [SerializeField] private float durationOfExplosion;
-
     [Header("Player Sounds")]
     [SerializeField] AudioClip _laserAudioClips;
     [SerializeField] private AudioClip _explosionAudioClip;
     [SerializeField, Range(1f, 10f)] private float _laserVolume = 2f;
     [SerializeField, Range(1f, 10f)] private float _explosionVolume = 2f;
-
 
     private Coroutine _fireCoroutine;
 

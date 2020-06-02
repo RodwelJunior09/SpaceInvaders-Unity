@@ -26,7 +26,7 @@ public class GameStatus : MonoBehaviour
 
     private void SaveData()
     {
-        int gamesObjects = FindObjectsOfType<MusicPlayer>().Length;
+        int gamesObjects = FindObjectsOfType<GameStatus>().Length;
         if (gamesObjects > 1)
         {
             Destroy(gameObject);

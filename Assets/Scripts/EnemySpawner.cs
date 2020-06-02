@@ -1,12 +1,12 @@
-﻿using System.Collections;
+﻿using UnityEngine;
+using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
-    [SerializeField] private List<WaveConfig> wavesConfigs;
     [SerializeField] int indexWave = 0;
     [SerializeField] private bool looping = false;
+    [SerializeField] private List<WaveConfig> wavesConfigs;
 
     // Start is called before the first frame update
     IEnumerator Start()
@@ -34,11 +34,5 @@ public class EnemySpawner : MonoBehaviour
             newEnemy.GetComponent<EnemyPathway>().SetWaveConfig(currentWave);
             yield return new WaitForSeconds(currentWave.GetTimeBetweenSpawn());
         }
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }

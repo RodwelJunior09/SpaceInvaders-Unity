@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f0d1f4dd007fd9a4583de211e2bb4ab0, type: 3}
-  m_Name: Wave1
+  m_Name: BomberWave
   m_EditorClassIdentifier: 
-  _enemyPrefab: {fileID: 9196406527465971415, guid: 56e96469797f54b06af4a71115f5df00,
+  _enemyPrefab: {fileID: 542319683188575787, guid: beda5e773b6fcfb4f9a287b7ce307b88,
     type: 3}
-  _pathPrefab: {fileID: 1658207437840707161, guid: 2f975972b8f11f94d8cef772bf0b0272,
+  _pathPrefab: {fileID: 5940891860898264796, guid: 0e228088e380fd34485d39649f0c1dea,
     type: 3}
-  _timeBetweenSpawn: 2
-  _spawnRandomFactor: 0.5
+  _timeBetweenSpawn: 3
+  _spawnRandomFactor: 0.3
   _numberOfEnemies: 5
-  _moveSpeed: 5
+  _moveSpeed: 1

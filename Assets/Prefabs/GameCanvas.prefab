@@ -33,10 +33,10 @@ RectTransform:
   m_Father: {fileID: 7242604535859047233}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 378.5, y: 465}
-  m_SizeDelta: {x: 295.00217, y: 95.96874}
+  m_AnchorMin: {x: 1, y: 1}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: -170.8, y: -61.761}
+  m_SizeDelta: {x: 313.6151, y: 117.49144}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &458265686
 CanvasRenderer:
@@ -75,8 +75,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4281510377
+  m_fontColor: {r: 0.9150943, g: 0.66409075, b: 0.19424175, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -101,7 +101,7 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_textAlignment: 257
+  m_textAlignment: 513
   m_characterSpacing: 0
   m_wordSpacing: 0
   m_lineSpacing: 0
@@ -170,7 +170,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74a01a3e6e7d1fb4d880e92744b59e96, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scoreTextDisplay: {fileID: 458265685}
 --- !u!1 &7242604535859047237
 GameObject:
   m_ObjectHideFlags: 0

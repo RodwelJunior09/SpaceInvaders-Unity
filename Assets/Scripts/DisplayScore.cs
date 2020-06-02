@@ -3,20 +3,19 @@ using UnityEngine;
 
 public class DisplayScore : MonoBehaviour
 {
-    private TextMeshProUGUI scoreTextDisplay;
-    private GameStatus gameStatus;
+    private TextMeshProUGUI _scoreTextDisplay;
+    private GameStatus _gameStatus;
 
     // Start is called before the first frame update
     void Start()
     {
-        gameStatus = FindObjectOfType<GameStatus>();
-        scoreTextDisplay = GetComponent<TextMeshProUGUI>();
-        scoreTextDisplay.text = gameStatus.GetScore().ToString();
+        _scoreTextDisplay = GetComponent<TextMeshProUGUI>();
+        _gameStatus = FindObjectOfType<GameStatus>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        scoreTextDisplay.text = gameStatus.GetScore().ToString();
+        _scoreTextDisplay.text = _gameStatus.GetScore().ToString();
     }
 }
