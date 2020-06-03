@@ -23,6 +23,7 @@ public class Player : MonoBehaviour
     [SerializeField, Range(1f, 10f)] private float _explosionVolume = 2f;
 
     private Coroutine _fireCoroutine;
+    private GameStatus gameStatus;
 
     // Local Variables
     private float _xMin;
@@ -30,10 +31,13 @@ public class Player : MonoBehaviour
     private float _yMin;
     private float _yMax;
 
+    private bool _recievedBonusHealth = false;
+
     // Start is called before the first frame update
     void Start()
     {
         SetupMoveBoundaries();
+        gameStatus = FindObjectOfType<GameStatus>();
     }
 
     // Update is called once per frame
@@ -41,11 +45,21 @@ public class Player : MonoBehaviour
     {
         Move();
         Fire();
+        BonusHealth();
     }
 
     public int GetPlayerHealth()
     {
         return health;
+    }
+
+    private void BonusHealth()
+    {
+        if (gameStatus.GetScore() > 500 && !_recievedBonusHealth)
+        {
+            health += 150;
+            _recievedBonusHealth = true;
+        }
     }
 
     private void Fire()

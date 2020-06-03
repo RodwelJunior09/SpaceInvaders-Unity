@@ -14,8 +14,7 @@ public class HealthDisplay : MonoBehaviour
         healthTextDisplay.text = player.GetPlayerHealth().ToString();
     }
 
-    // Update is called once per frame
-    void Update()
+    void UpdatePlayerHealth()
     {
         var playerHealth = player.GetPlayerHealth();
         if (playerHealth < 0)
@@ -26,5 +25,11 @@ public class HealthDisplay : MonoBehaviour
         {
             healthTextDisplay.text = playerHealth.ToString();
         }
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        UpdatePlayerHealth();
     }
 }

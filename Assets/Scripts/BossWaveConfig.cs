@@ -4,13 +4,17 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Boss Wave Config")]
 public class BossWaveConfig : ScriptableObject
 {
+    [Header("Boss Config")]
     [SerializeField] private GameObject _bossPrefab;
     [SerializeField] private GameObject _pathPrefab;
-    [SerializeField] private GameObject _helperBombers;
-
-    [SerializeField] private int _numberOfHelpersBombers = 4;
     [SerializeField] private float _bossMoveSpeed = 10f;
     [SerializeField] private float _bombersMoveSpeed = 5f;
+
+    [Header("Helpers Bombers Config")]
+    [SerializeField] private GameObject _helperBombers;
+    [SerializeField] private GameObject _helperBomberPath;
+    [SerializeField] private int _numberOfHelpersBombers = 4;
+
 
     public GameObject GetBossPrefab()
     {
