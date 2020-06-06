@@ -3,8 +3,8 @@ using UnityEngine;
 
 public class EnemyPathway : MonoBehaviour
 {
-    private WaveConfig _waveConfig;
     private int _wayPointIndex = 0;
+    private WaveConfig _waveConfig;
     private List<Transform> _wayPoints;
 
     // Start is called before the first frame update

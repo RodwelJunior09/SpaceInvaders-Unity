@@ -43,10 +43,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f31819a7a5176364ab5d1eaa39cda4b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  wavesConfigs:
-  - {fileID: 11400000, guid: 1bec75064126dc94b8668ef240336b9b, type: 2}
-  - {fileID: 11400000, guid: 3e809393d118ef44db46c1c29235216f, type: 2}
-  - {fileID: 11400000, guid: 48014c77904599c429df64b121bd5e47, type: 2}
-  - {fileID: 11400000, guid: 88476203ca33a624080e9efef3ab9656, type: 2}
-  indexWave: 0
   looping: 1
+  indexWave: 0
+  _wavesConfigs:
+  - {fileID: 11400000, guid: 1bec75064126dc94b8668ef240336b9b, type: 2}
+  - {fileID: 11400000, guid: 48014c77904599c429df64b121bd5e47, type: 2}
+  - {fileID: 11400000, guid: 3e809393d118ef44db46c1c29235216f, type: 2}
+  - {fileID: 11400000, guid: 88476203ca33a624080e9efef3ab9656, type: 2}
+  - {fileID: 11400000, guid: b7120f162c3d0eb4da951016e0401b33, type: 2}
+  - {fileID: 11400000, guid: f0df4b15877692c42955e2173f373279, type: 2}
+  _bossConfig: {fileID: 11400000, guid: 402f0ba61d61a87499232d88ea1ee22b, type: 2}

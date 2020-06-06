@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c0c459aef0d2cc44bd2c614f73f5ec2, type: 3}
+  m_Name: BossWave
+  m_EditorClassIdentifier: 
+  _bossPrefab: {fileID: 3140902597330884369, guid: aa63bbbd16a293842a7c5ae2c97dc115,
+    type: 3}
+  _bossPathPrefab: {fileID: 4737012638300379921, guid: 87fd02334cf6c2e4296a00be748b787e,
+    type: 3}
+  _bossMoveSpeed: 10
+  _helperBombers: {fileID: 6398441111844940655, guid: d5d601a52c1f0764cb69d2d92b904604,
+    type: 3}
+  _helperBomberPath: {fileID: 1299844977698819798, guid: 6f590f880b8e582498a1d4cbd95bbeee,
+    type: 3}
+  _numberOfHelpersBombers: 4
+  _bombersMoveSpeed: 6
+  _timeBetweenSpawnBombers: 2

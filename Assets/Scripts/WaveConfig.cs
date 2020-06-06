@@ -24,6 +24,7 @@ public class WaveConfig : ScriptableObject
         }
         return waveWayPoints;
     }
+
     public float GetTimeBetweenSpawn()
     {
         return _timeBetweenSpawn;

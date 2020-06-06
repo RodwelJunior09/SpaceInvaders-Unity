@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &9052609718563458855
+--- !u!1 &3785725204793284558
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,38 +8,39 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 9052609718563458857}
-  - component: {fileID: 9052609718563458854}
-  - component: {fileID: 9052609718563458856}
-  - component: {fileID: 139310233}
-  m_Layer: 8
-  m_Name: Player
+  - component: {fileID: 3785725204793284544}
+  - component: {fileID: 3785725204793284559}
+  - component: {fileID: 3785725204793284547}
+  - component: {fileID: 3785725204793284546}
+  - component: {fileID: 3785725204793284545}
+  m_Layer: 11
+  m_Name: HelperBomberMissile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &9052609718563458857
+--- !u!4 &3785725204793284544
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9052609718563458855}
+  m_GameObject: {fileID: 3785725204793284558}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.5, y: -5.32, z: -2}
-  m_LocalScale: {x: 2.8740199, y: 2.3283834, z: 1}
+  m_LocalPosition: {x: 1.222, y: 0.1032, z: 0}
+  m_LocalScale: {x: 3.093738, y: 4.601875, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &9052609718563458854
+--- !u!212 &3785725204793284559
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9052609718563458855}
+  m_GameObject: {fileID: 3785725204793284558}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -72,53 +73,58 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 8d5f697c999643441bb417d834c597de, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 98be93167ed6cd54d82a8e882da6f3e1, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.31, y: 0.48}
+  m_Size: {x: 0.08, y: 0.26}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &9052609718563458856
+--- !u!114 &3785725204793284547
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9052609718563458855}
+  m_GameObject: {fileID: 3785725204793284558}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b8f9ce7d00f294bb99c3942cd57119bb, type: 3}
+  m_Script: {fileID: 11500000, guid: dcc05c5177c907346bd69c92de6b9f03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _padding: 1
-  health: 300
-  speedOfPlayer: 10
-  durationOfExplosion: 0.5
-  _explosionGameObject: {fileID: 5254205660909648704, guid: bfda7d161d1b99547a8f136b70f08ad4,
-    type: 3}
-  _playerLaser: {fileID: 9046354095825046819, guid: 4dfd694b3ff0348d581972a412f60579,
-    type: 3}
-  projectileSpeed: 10
-  projectFirePeriod: 0.09
-  _bonusHealthAudioClip: {fileID: 8300000, guid: 1087c107b928d6d4a83865cb0afadde1,
-    type: 3}
-  _healthBonusVolume: 0.382
-  _laserAudioClips: {fileID: 8300000, guid: fa765c6c4a7461f428b26d7daf300fe9, type: 3}
-  _laserVolume: 0.378
-  _explosionAudioClip: {fileID: 8300000, guid: 0c5528c460717c44d9dd7c77cdc674d0, type: 3}
-  _explosionVolume: 0.374
---- !u!58 &139310233
-CircleCollider2D:
+  damage: 175
+--- !u!50 &3785725204793284546
+Rigidbody2D:
+  serializedVersion: 4
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9052609718563458855}
+  m_GameObject: {fileID: 3785725204793284558}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
+--- !u!70 &3785725204793284545
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3785725204793284558}
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
@@ -126,5 +132,5 @@ CircleCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 0.24
+  m_Size: {x: 0.08, y: 0.25999996}
+  m_Direction: 0
