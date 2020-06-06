@@ -17,10 +17,14 @@ public class Player : MonoBehaviour
     [SerializeField] private float projectFirePeriod = 1f;
 
     [Header("Player Sounds")]
+    [SerializeField] private AudioClip _bonusHealthAudioClip;
+    [SerializeField, Range(0f, 1f)] private float _healthBonusVolume = 1f;
+
     [SerializeField] AudioClip _laserAudioClips;
+    [SerializeField, Range(0f, 1f)] private float _laserVolume = 1f;
+
     [SerializeField] private AudioClip _explosionAudioClip;
-    [SerializeField, Range(1f, 10f)] private float _laserVolume = 2f;
-    [SerializeField, Range(1f, 10f)] private float _explosionVolume = 2f;
+    [SerializeField, Range(0f, 1f)] private float _explosionVolume = 1f;
 
     private Coroutine _fireCoroutine;
     private GameStatus gameStatus;
@@ -57,7 +61,8 @@ public class Player : MonoBehaviour
     {
         if (gameStatus.GetScore() > 500 && !_recievedBonusHealth)
         {
-            health += 150;
+            health += 200;
+            AudioSource.PlayClipAtPoint(_bonusHealthAudioClip, Camera.main.transform.position, _healthBonusVolume);
             _recievedBonusHealth = true;
         }
     }

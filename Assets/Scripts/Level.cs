@@ -6,7 +6,13 @@ public class Level : MonoBehaviour
 {
     public void LoadStartMenuScene()
     {
+        FindObjectOfType<GameStatus>().ResetGame();
         SceneManager.LoadScene("StartMenu");
+    }
+
+    public void LoadPlayerWins()
+    {
+        StartCoroutine(WinScene());
     }
 
     public void LoadGameOver()
@@ -18,6 +24,12 @@ public class Level : MonoBehaviour
     {
         yield return new WaitForSeconds(2);
         SceneManager.LoadScene("GameOver");
+    }
+
+    private IEnumerator WinScene()
+    {
+        yield return new WaitForSeconds(2);
+        SceneManager.LoadScene("WinScene");
     }
 
     public void LoadFirstLevel()

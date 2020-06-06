@@ -448,16 +448,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    - target: {fileID: 9052609718563458856, guid: 306fbbdca29484e8eb0d2790f69258cb,
-        type: 3}
-      propertyPath: projectileSpeed
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 9052609718563458856, guid: 306fbbdca29484e8eb0d2790f69258cb,
-        type: 3}
-      propertyPath: projectFirePeriod
-      value: 0.09
-      objectReference: {fileID: 0}
     - target: {fileID: 9052609718563458857, guid: 306fbbdca29484e8eb0d2790f69258cb,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -897,7 +887,7 @@ PrefabInstance:
     - target: {fileID: 3651850717667692030, guid: 350235d1119d4ae48a33425bed218012,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 8.02
+      value: 10.92
       objectReference: {fileID: 0}
     - target: {fileID: 3651850717667692030, guid: 350235d1119d4ae48a33425bed218012,
         type: 3}
@@ -927,7 +917,7 @@ PrefabInstance:
     - target: {fileID: 3651850717667692030, guid: 350235d1119d4ae48a33425bed218012,
         type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 3651850717667692030, guid: 350235d1119d4ae48a33425bed218012,
         type: 3}

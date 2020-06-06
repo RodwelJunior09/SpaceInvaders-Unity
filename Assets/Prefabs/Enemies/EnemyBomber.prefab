@@ -98,11 +98,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e96f58541f548854aa94e1fef7b261ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 800
+  health: 1200
   shotCounter: 0
   minBetweenShots: 0.2
-  maxBetweenShots: 3
-  projectileSpeed: 3
+  maxBetweenShots: 1
+  projectileSpeed: 5
   durationExplosion: 1
   scoreOfEnemyKilled: 50
   explosionGameObject: {fileID: 5254205660909648704, guid: bfda7d161d1b99547a8f136b70f08ad4,
