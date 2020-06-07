@@ -23,6 +23,9 @@ public class Player : MonoBehaviour
     [SerializeField] AudioClip _laserAudioClips;
     [SerializeField, Range(0f, 1f)] private float _laserVolume = 1f;
 
+    [SerializeField] private AudioClip _damageAudioClip;
+    [SerializeField, Range(0f, 1f)] private float _damageVolume = 0.5f;
+
     [SerializeField] private AudioClip _explosionAudioClip;
     [SerializeField, Range(0f, 1f)] private float _explosionVolume = 1f;
 
@@ -103,6 +106,7 @@ public class Player : MonoBehaviour
     private void HitProcess(DamageDealer damageDealer)
     {
         health -= damageDealer.GetDamage();
+        AudioSource.PlayClipAtPoint(_damageAudioClip, Camera.main.transform.position, _damageVolume);
         damageDealer.Hit();
         if (health <= 0)
         {
