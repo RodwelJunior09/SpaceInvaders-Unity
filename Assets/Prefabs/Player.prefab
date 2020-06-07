@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 9052609718563458857}
   - component: {fileID: 9052609718563458854}
   - component: {fileID: 9052609718563458856}
-  - component: {fileID: 139310233}
+  - component: {fileID: 2439636364343658959}
   m_Layer: 8
   m_Name: Player
   m_TagString: Untagged
@@ -110,10 +110,12 @@ MonoBehaviour:
   _healthBonusVolume: 0.382
   _laserAudioClips: {fileID: 8300000, guid: fa765c6c4a7461f428b26d7daf300fe9, type: 3}
   _laserVolume: 0.378
+  _damageAudioClip: {fileID: 8300000, guid: 1eb46b2e9f76e304b8e63805f8230ae3, type: 3}
+  _damageVolume: 0.445
   _explosionAudioClip: {fileID: 8300000, guid: 0c5528c460717c44d9dd7c77cdc674d0, type: 3}
   _explosionVolume: 0.374
---- !u!58 &139310233
-CircleCollider2D:
+--- !u!61 &2439636364343658959
+BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -125,6 +127,16 @@ CircleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.0010730177, y: -0.015893146}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.31, y: 0.48}
+    newSize: {x: 0.31, y: 0.48}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
   serializedVersion: 2
-  m_Radius: 0.24
+  m_Size: {x: 0.18553331, y: 0.44821373}
+  m_EdgeRadius: 0
