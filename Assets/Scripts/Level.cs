@@ -20,6 +20,8 @@ public class Level : MonoBehaviour
         StartCoroutine(GameOverScene());
     }
 
+    public void LoadLeaderBoard() => SceneManager.LoadScene("Leaderboard"); 
+
     private IEnumerator GameOverScene()
     {
         yield return new WaitForSeconds(2);
