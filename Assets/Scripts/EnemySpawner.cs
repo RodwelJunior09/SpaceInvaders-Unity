@@ -42,7 +42,7 @@ public class EnemySpawner : MonoBehaviour
         var boss = Instantiate(_bossConfig.GetBossPrefab(), _bossConfig.GetBossWayPoints().First().transform.position,
             Quaternion.identity);
         boss.GetComponent<BossPathway>().SetBossWaveConfig(_bossConfig);
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(5);
     }
 
     private IEnumerator AppearsBossHelpers()
