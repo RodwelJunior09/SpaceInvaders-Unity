@@ -10,8 +10,11 @@ GameObject:
   m_Component:
   - component: {fileID: 9052609718563458857}
   - component: {fileID: 9052609718563458854}
-  - component: {fileID: 9052609718563458856}
   - component: {fileID: 2439636364343658959}
+  - component: {fileID: 9052609718563458856}
+  - component: {fileID: 520385592475949723}
+  - component: {fileID: 2489287780775924165}
+  - component: {fileID: 6110411142808775606}
   m_Layer: 8
   m_Name: Player
   m_TagString: Untagged
@@ -28,10 +31,11 @@ Transform:
   m_GameObject: {fileID: 9052609718563458855}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.5, y: -5.32, z: -2}
-  m_LocalScale: {x: 2.8740199, y: 2.3283834, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &9052609718563458854
 SpriteRenderer:
@@ -44,10 +48,12 @@ SpriteRenderer:
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -83,37 +89,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &9052609718563458856
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9052609718563458855}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b8f9ce7d00f294bb99c3942cd57119bb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _padding: 1
-  health: 300
-  speedOfPlayer: 10
-  durationOfExplosion: 0.5
-  _explosionGameObject: {fileID: 5254205660909648704, guid: bfda7d161d1b99547a8f136b70f08ad4,
-    type: 3}
-  _playerLaser: {fileID: 9046354095825046819, guid: 4dfd694b3ff0348d581972a412f60579,
-    type: 3}
-  projectileSpeed: 10
-  projectFirePeriod: 0.09
-  _bonusHealthAudioClip: {fileID: 8300000, guid: 1087c107b928d6d4a83865cb0afadde1,
-    type: 3}
-  _healthBonusVolume: 0.382
-  _laserAudioClips: {fileID: 8300000, guid: fa765c6c4a7461f428b26d7daf300fe9, type: 3}
-  _laserVolume: 0.378
-  _damageAudioClip: {fileID: 8300000, guid: 1eb46b2e9f76e304b8e63805f8230ae3, type: 3}
-  _damageVolume: 0.445
-  _explosionAudioClip: {fileID: 8300000, guid: 0c5528c460717c44d9dd7c77cdc674d0, type: 3}
-  _explosionVolume: 0.374
 --- !u!61 &2439636364343658959
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -124,6 +99,25 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -140,3 +134,72 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.25098568, y: 0.45748472}
   m_EdgeRadius: 0
+--- !u!114 &9052609718563458856
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9052609718563458855}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8f9ce7d00f294bb99c3942cd57119bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 400
+  durationOfExplosion: 0.5
+  _explosionGameObject: {fileID: 5254205660909648704, guid: bfda7d161d1b99547a8f136b70f08ad4,
+    type: 3}
+  _alertBuffMessage: {fileID: 0}
+--- !u!114 &520385592475949723
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9052609718563458855}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4fb670268e02e842b576bb53d93d4a6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _Ypadding: 3
+  _Xpadding: 1.5
+  speedOfPlayer: 10
+--- !u!114 &2489287780775924165
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9052609718563458855}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 145cadc72acb6b543a7ea301ed787cf7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _playerLaser: {fileID: 9046354095825046819, guid: 4dfd694b3ff0348d581972a412f60579,
+    type: 3}
+  projectileSpeed: 10
+  projectFirePeriod: 3
+  _laserAudioClips: {fileID: 8300000, guid: 1118d8908a0c34a4db54f3ce5d8a2e08, type: 3}
+  _laserVolume: 1
+--- !u!114 &6110411142808775606
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9052609718563458855}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 91df06984ee6bca46b0b31e7b02c6f9f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _bonusHealthAudioClip: {fileID: 8300000, guid: 4d8a4cfc1f32bbd43a07ee812f17cc03,
+    type: 3}
+  _healthBonusVolume: 1
+  _damageAudioClip: {fileID: 8300000, guid: b74f6edffc4602b408d725c506db9f9a, type: 3}
+  _damageVolume: 0.5
+  _explosionAudioClip: {fileID: 8300000, guid: 0c5528c460717c44d9dd7c77cdc674d0, type: 3}
+  _explosionVolume: 1
