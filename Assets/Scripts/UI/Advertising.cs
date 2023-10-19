@@ -61,14 +61,12 @@ public class Advertising : MonoBehaviour, IUnityAdsLoadListener, IUnityAdsShowLi
     }
 
     public void ShowInterAd(){
-        Debug.Log("The selected ad source is Unity Ads");
-        Advertisement.Show(INTER_ADS_ID, this);
-        // int random = Random.Range(1, 1000);
-        // if (random % 2 != 0)
-        // {
-        //     Debug.Log("The selected ad source is Unity Ads");
-        //     Advertisement.Show(INTER_ADS_ID, this);
-        // }
+        int random = Random.Range(1, 1000);
+        if (random % 2 != 0)
+        {
+            Debug.Log("The selected ad source is Unity Ads");
+            Advertisement.Show(INTER_ADS_ID, this);
+        }
         // else {
         //     Debug.Log("The ad is being shown is an AD Mob");
         //     //ShowAdMobInterstitialAds();
