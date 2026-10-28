@@ -60,7 +60,7 @@ public class EnemySpawner : MonoBehaviour
 
     private IEnumerator SpawnAllWaves()
     {
-        if (_gameStatus.GetScore() > 1000)
+        if (_gameStatus.GetScore() > 10000)
         {
             yield return StartCoroutine(SpawnBossWave());
         }

@@ -6,7 +6,7 @@ public class Movement : MonoBehaviour
     [Header("Movement Settings")]
     [SerializeField] float _Ypadding = 1f;
     [SerializeField] float _Xpadding = 1f;
-    [SerializeField] float speedOfPlayer = 100f;
+    [SerializeField, Range(1f, 5f)] float speedOfPlayer = 2f;
 
     // Local Variables
     private float _xMin;
@@ -26,7 +26,24 @@ public class Movement : MonoBehaviour
     // // Update is called once per frame
     void Update()
     {
-        JoystickMovement();
+        //JoystickMovement();
+        TouchMovement();
+    }
+
+    private void FixedUpdate()
+    {
+        //TouchMovement();
+    }
+
+    void TouchMovement()
+    {
+
+        for (int i = 0; i < Input.touchCount; i++)
+        {
+            Vector3 touchPos = Camera.main.ScreenToWorldPoint(Input.touches[i].position);
+
+            this.transform.position = new Vector2(touchPos.x, touchPos.y);
+        }
     }
 
     void JoystickMovement(){

@@ -165,7 +165,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _Ypadding: 3
   _Xpadding: 1.5
-  speedOfPlayer: 10
+  speedOfPlayer: 3.59
 --- !u!114 &2489287780775924165
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -181,7 +181,7 @@ MonoBehaviour:
   _playerLaser: {fileID: 9046354095825046819, guid: 4dfd694b3ff0348d581972a412f60579,
     type: 3}
   projectileSpeed: 10
-  projectFirePeriod: 3
+  projectFirePeriod: 0.25
   _laserAudioClips: {fileID: 8300000, guid: 1118d8908a0c34a4db54f3ce5d8a2e08, type: 3}
   _laserVolume: 1
 --- !u!114 &6110411142808775606
