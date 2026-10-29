@@ -11,16 +11,21 @@ public class Shooting : MonoBehaviour
     [SerializeField] AudioClip _laserAudioClips;
     [SerializeField, Range(0f, 1f)] private float _laserVolume = 1f;
 
-    private Coroutine _fireCoroutine;
+    private int _attackBonus;
 
-    public DamageDealer GetProjectile => _playerLaser.GetComponent<DamageDealer>();
+    // Applied to each spawned laser so the prefab asset is never modified
+    public void IncreaseAttack(int increaseAmount)
+    {
+        _attackBonus += increaseAmount;
+    }
 
     private IEnumerator ContinousFire()
     {
         while (true)
         {
-            var laser = Instantiate(_playerLaser, transform.position, Quaternion.identity) as GameObject;
-            laser.GetComponent<Rigidbody2D>().velocity = new Vector2(0, projectileSpeed);
+            var laser = Instantiate(_playerLaser, transform.position, Quaternion.identity);
+            laser.GetComponent<Rigidbody2D>().linearVelocity = new Vector2(0, projectileSpeed);
+            if (_attackBonus > 0) laser.GetComponent<DamageDealer>().IncreaseDamage(_attackBonus);
             AudioSource.PlayClipAtPoint(_laserAudioClips, Camera.main.transform.position, _laserVolume);
             yield return new WaitForSeconds(projectFirePeriod);
         }

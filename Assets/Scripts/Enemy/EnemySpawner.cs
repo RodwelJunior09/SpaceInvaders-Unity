@@ -9,39 +9,55 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] private bool looping = false;
 
     [Header("Enemies Waves")]
-    [SerializeField] int indexWave = 0;
+    [SerializeField] int indexWave = 0; // Wave to start from
     [SerializeField] private List<WaveConfig> _wavesConfigs;
 
     [Header("Boss Wave")]
     [SerializeField] private BossWaveConfig _bossConfig;
+    [SerializeField] private int _bossScoreThreshold = 1000;
 
     private GameStatus _gameStatus;
     private GameObject _bossEnemy;
+    private bool _bossSpawned;
 
     // Start is called before the first frame update
     IEnumerator Start()
     {
-        _gameStatus = FindObjectOfType<GameStatus>();
-        while (looping)
+        _gameStatus = FindFirstObjectByType<GameStatus>();
+        do
         {
-            yield return StartCoroutine(SpawnAllWaves());
-        }
+            if (!_bossSpawned && IsBossTime())
+            {
+                yield return StartCoroutine(AppearEnemyBoss());
+            }
+
+            if (_bossSpawned)
+            {
+                // Boss defeated, the win scene takes over from here
+                if (!_bossEnemy) yield break;
+                yield return StartCoroutine(AppearsBossHelpers());
+            }
+            else
+            {
+                yield return StartCoroutine(SpawnAllWaves());
+            }
+
+            // Always wait at least a frame so an empty pass can't spin
+            yield return null;
+        } while (looping);
     }
 
-    private IEnumerator SpawnBossWave()
+    private bool IsBossTime()
     {
-        if (GameObject.FindGameObjectsWithTag("Boss").Length < 1)
-        {
-            yield return StartCoroutine(AppearEnemyBoss());
-        }
-        yield return StartCoroutine(AppearsBossHelpers());
+        return _bossConfig && _gameStatus && _gameStatus.GetScore() >= _bossScoreThreshold;
     }
 
     private IEnumerator AppearEnemyBoss()
     {
-        var boss = Instantiate(_bossConfig.GetBossPrefab(), _bossConfig.GetBossWayPoints().First().transform.position,
+        _bossEnemy = Instantiate(_bossConfig.GetBossPrefab(), _bossConfig.GetBossWayPoints().First().transform.position,
             Quaternion.identity);
-        boss.GetComponent<BossPathway>().SetBossWaveConfig(_bossConfig);
+        _bossEnemy.GetComponent<BossPathway>().SetBossWaveConfig(_bossConfig);
+        _bossSpawned = true;
         yield return new WaitForSeconds(5);
     }
 
@@ -57,18 +73,13 @@ public class EnemySpawner : MonoBehaviour
         }
     }
 
-
     private IEnumerator SpawnAllWaves()
     {
-        if (_gameStatus.GetScore() > 10000)
-        {
-            yield return StartCoroutine(SpawnBossWave());
-        }
         for (int i = indexWave; i < _wavesConfigs.Count; i++)
         {
-            var currentWave = _wavesConfigs[i];
-            if (_gameStatus.GetScore() <= 1000) yield return StartCoroutine(SpawnAllEnemies(currentWave));
-            else { StopCoroutine(SpawnAllEnemies(currentWave)); break; }
+            // Stop the regular waves as soon as the boss should come in
+            if (IsBossTime()) yield break;
+            yield return StartCoroutine(SpawnAllEnemies(_wavesConfigs[i]));
         }
     }
 
