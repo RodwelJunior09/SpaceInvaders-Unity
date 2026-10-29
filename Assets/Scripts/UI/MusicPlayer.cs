@@ -4,7 +4,7 @@ public class MusicPlayer : MonoBehaviour
 {
     private void Awake()
     {
-        int musicPlayerCount = FindObjectsOfType<MusicPlayer>().Length;
+        int musicPlayerCount = FindObjectsByType<MusicPlayer>(FindObjectsSortMode.None).Length;
         if (musicPlayerCount > 1)
         {
             gameObject.SetActive(false);

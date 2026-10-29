@@ -15,7 +15,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] private GameObject explosionGameObject;
     [SerializeField] private GameObject enemyLaserPrefab;
 
-    [Header("Enemy Sounds")] 
+    [Header("Enemy Sounds")]
     [SerializeField] private AudioClip _laserAudioClip;
     [SerializeField] private AudioClip _explosionAudioClip;
 
@@ -23,7 +23,7 @@ public class Enemy : MonoBehaviour
     [SerializeField, Range(0f, 1f)] private float _laserVolume = 0.5f;
     [SerializeField, Range(0f, 1f)] private float _explosionVolume = 0.5f;
 
-    [SerializeField] private float _bossFireLaserRotation = 1f;
+    private bool _isDead;
 
     // Start is called before the first frame update
     void Start()
@@ -36,8 +36,6 @@ public class Enemy : MonoBehaviour
     {
         CountDownAndShoot();
     }
-
-    public DamageDealer GetEnemyProjectile => enemyLaserPrefab.GetComponent<DamageDealer>();
 
     private void CountDownAndShoot()
     {
@@ -56,19 +54,20 @@ public class Enemy : MonoBehaviour
 
     private void Fire()
     {
-        var laser = Instantiate(enemyLaserPrefab, transform.position, Quaternion.identity);
-        if (tag.Contains("Boss")) laser = Instantiate(enemyLaserPrefab, transform.position, transform.rotation);
-            laser.GetComponent<Rigidbody2D>().velocity = new Vector2(0, -projectileSpeed);
+        var rotation = CompareTag("Boss") ? transform.rotation : Quaternion.identity;
+        var laser = Instantiate(enemyLaserPrefab, transform.position, rotation);
+        laser.GetComponent<Rigidbody2D>().linearVelocity = new Vector2(0, -projectileSpeed);
         AudioSource.PlayClipAtPoint(_laserAudioClip, Camera.main.transform.position, _laserVolume);
     }
 
     private void OnTriggerEnter2D(Collider2D otherCollision)
     {
+        if (_isDead) return;
         var damageDealer = otherCollision.GetComponent<DamageDealer>();
         if (!damageDealer)
         {
             return;
-        } 
+        }
         HitProcess(damageDealer);
     }
 
@@ -84,17 +83,19 @@ public class Enemy : MonoBehaviour
 
     private void PlayerSuccess()
     {
-        FindObjectOfType<Level>().LoadPlayerWins();
+        FindFirstObjectByType<Level>().LoadPlayerWins();
     }
 
     private void Die()
     {
-        var enemyObject = gameObject;
-        Destroy(enemyObject);
-        FindObjectOfType<GameStatus>().AddToScore(scoreOfEnemyKilled);
+        // Destroy is deferred, so block a second hit in the same frame from killing us twice
+        _isDead = true;
+        Destroy(gameObject);
+        var gameStatus = FindFirstObjectByType<GameStatus>();
+        if (gameStatus) gameStatus.AddToScore(scoreOfEnemyKilled);
         GameObject vfxExplosion = Instantiate(explosionGameObject, transform.position, transform.rotation);
         AudioSource.PlayClipAtPoint(_explosionAudioClip, Camera.main.transform.position, _explosionVolume);
         Destroy(vfxExplosion, durationExplosion);
-        if (enemyObject.tag.Contains("Boss")) PlayerSuccess();
+        if (CompareTag("Boss")) PlayerSuccess();
     }
 }

@@ -6,10 +6,10 @@ public class Level : MonoBehaviour
 {
     public void LoadStartMenuScene()
     {
-        FindObjectOfType<GameStatus>().ResetGame();
+        ResetGameStatus();
         SceneManager.LoadScene("StartMenu");
     }
-    
+
     public void LoadPlayerWins()
     {
         StartCoroutine(WinScene());
@@ -20,7 +20,7 @@ public class Level : MonoBehaviour
         StartCoroutine(GameOverScene());
     }
 
-    public void LoadLeaderBoard() => SceneManager.LoadScene("Leaderboard"); 
+    public void LoadLeaderBoard() => SceneManager.LoadScene("Leaderboard");
 
     private IEnumerator GameOverScene()
     {
@@ -36,7 +36,7 @@ public class Level : MonoBehaviour
 
     public void LoadFirstLevel()
     {
-        FindObjectOfType<GameStatus>().ResetGame();
+        ResetGameStatus();
         SceneManager.LoadScene("Lvl1");
     }
 
@@ -49,5 +49,11 @@ public class Level : MonoBehaviour
     public void QuitGame()
     {
         Application.Quit();
+    }
+
+    private void ResetGameStatus()
+    {
+        var gameStatus = FindFirstObjectByType<GameStatus>();
+        if (gameStatus) gameStatus.ResetGame();
     }
 }

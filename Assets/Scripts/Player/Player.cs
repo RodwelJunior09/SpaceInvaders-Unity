@@ -15,12 +15,15 @@ public class Player : MonoBehaviour
     private GameStatus gameStatus;
     private SoundsManager _soundManager;
     private bool _recievedBonusHealth = false;
+    private bool _isDead;
+    private int _damageReduction;
+    private Coroutine _alertCoroutine;
 
     // Start is called before the first frame update
     void Start()
     {
         _alertBuffMessage.enabled = false;
-        gameStatus = FindObjectOfType<GameStatus>();
+        gameStatus = FindFirstObjectByType<GameStatus>();
         _soundManager = GetComponent<SoundsManager>();
     }
 
@@ -37,7 +40,7 @@ public class Player : MonoBehaviour
 
     private void BonusHealth()
     {
-        if (gameStatus.GetScore() > 500 && !_recievedBonusHealth)
+        if (!_recievedBonusHealth && gameStatus && gameStatus.GetScore() > 500)
         {
             health += 200;
             _soundManager.PlayHealthSound();
@@ -47,6 +50,7 @@ public class Player : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        if (_isDead) return;
         var damageDealer = collision.GetComponent<DamageDealer>();
         if (!damageDealer)
             return;
@@ -55,7 +59,8 @@ public class Player : MonoBehaviour
 
     private void HitProcess(DamageDealer damageDealer)
     {
-        health -= damageDealer.GetDamage();
+        // Defense buffs reduce each hit, but a hit always does at least 1 damage
+        health -= Mathf.Max(1, damageDealer.GetDamage() - _damageReduction);
         _soundManager.PlayHitSound();
         damageDealer.Hit();
         if (health <= 0)
@@ -78,9 +83,10 @@ public class Player : MonoBehaviour
                 break;
             default:
                 Debug.LogWarning("No buff has been named....");
-                break;
+                return;
         }
-        StartCoroutine(ShowAlertBuffMessage(buffName));
+        if (_alertCoroutine != null) StopCoroutine(_alertCoroutine);
+        _alertCoroutine = StartCoroutine(ShowAlertBuffMessage(buffName));
     }
 
     void IncreaseHealth(){
@@ -88,11 +94,11 @@ public class Player : MonoBehaviour
     }
 
     void IncreaseDefense(){
-        FindObjectOfType<Enemy>().GetEnemyProjectile.DecreaseDamage(5);
+        _damageReduction += 5;
     }
 
     void IncreaseAttack(){
-        GetComponent<Shooting>().GetProjectile.IncreaseDamage(10);
+        GetComponent<Shooting>().IncreaseAttack(10);
     }
 
     IEnumerator ShowAlertBuffMessage(string alertMessage)
@@ -112,17 +118,21 @@ public class Player : MonoBehaviour
         }
         yield return new WaitForSeconds(5);
         _alertBuffMessage.enabled = false;
+        _alertCoroutine = null;
     }
 
     private void Die()
     {
+        // Destroy is deferred, so block a second hit in the same frame from killing us twice
+        _isDead = true;
         Destroy(gameObject);
         GameObject vfxExplosion = Instantiate(_explosionGameObject, transform.position, transform.rotation);
         _soundManager.PlayExplosionSound();
         Destroy(vfxExplosion, durationOfExplosion);
-        // Loading game over screen...
-        FindObjectOfType<Advertising>().ShowInterAd(); // Loads a new inter ads....
-        FindObjectOfType<Level>().LoadGameOver(); // Loads a game over screen...
+        // Load the game over screen first so a missing ad object can't block it
+        FindFirstObjectByType<Level>().LoadGameOver();
+        var advertising = FindFirstObjectByType<Advertising>();
+        if (advertising) advertising.ShowInterAd();
     }
 
 }
