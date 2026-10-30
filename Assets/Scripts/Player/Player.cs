@@ -118,7 +118,7 @@ namespace Player
         }
 
         private void IncreaseAttack(){
-            GetComponent<Shooting>().IncreaseAttack(10);
+            GetComponent<Shooting>().IncreaseSpeed();
         }
 
         private IEnumerator ShowAlertBuffMessage(string alertMessage)

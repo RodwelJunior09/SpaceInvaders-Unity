@@ -1,4 +1,5 @@
-﻿using UI;
+﻿using Player;
+using UI;
 using UnityEngine;
 
 public class Enemy : MonoBehaviour

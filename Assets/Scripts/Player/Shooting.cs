@@ -18,10 +18,10 @@ namespace Player
         private int _attackBonus;
 
         // Applied to each spawned laser so the prefab asset is never modified
-        public void IncreaseAttack(int increaseAmount)
+        public void IncreaseSpeed()
         {
-            _attackBonus += increaseAmount;
-            projectileSpeed += 4;
+            if (projectileSpeed < 20)
+                projectileSpeed += 4;
             if (projectFirePeriod > 0.1f)
                 projectFirePeriod -= 0.05f;
         }
