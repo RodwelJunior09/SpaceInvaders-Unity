@@ -23,8 +23,23 @@ namespace UI
         // would be reset on each scene change
         private static float _nextAdTime;
 
+        // True when an ad was played and the next player that spawns should get a few seconds of immunity
+        private static bool _pendingImmunity;
+
         [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]
-        private static void ResetCooldown() => _nextAdTime = 0f;
+        private static void ResetCooldown()
+        {
+            _nextAdTime = 0f;
+            _pendingImmunity = false;
+        }
+
+        // Returns true once after an ad was played, so only one player gets the immunity
+        public static bool ConsumePendingImmunity()
+        {
+            var pending = _pendingImmunity;
+            _pendingImmunity = false;
+            return pending;
+        }
 
         private void Start()
         {
@@ -47,6 +62,7 @@ namespace UI
             Debug.Log("The selected ad source is Unity Ads");
             _interAdLoaded = false;
             _nextAdTime = Time.unscaledTime + adCooldownSeconds;
+            _pendingImmunity = true;
             Advertisement.Show(InterAdsID, this);
         }
 
@@ -80,6 +96,13 @@ namespace UI
         public void OnUnityAdsShowComplete(string placementId, UnityAdsShowCompletionState showCompletionState)
         {
             Debug.Log("The ads are completed...");
+            // If a player is already in the game, give the immunity now that the ad is over
+            var player = FindFirstObjectByType<Player.Player>();
+            if (player)
+            {
+                _pendingImmunity = false;
+                player.GrantAdImmunity();
+            }
             // Each ad can only be shown once, so get the next one ready
             LoadUnityAds();
         }
@@ -87,6 +110,8 @@ namespace UI
         public void OnUnityAdsShowFailure(string placementId, UnityAdsShowError error, string message)
         {
             Debug.LogWarning($"There's an issue with showing the unity ads {message}");
+            // No ad was actually shown, so no immunity is needed
+            _pendingImmunity = false;
             LoadUnityAds();
         }
 

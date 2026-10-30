@@ -11,6 +11,8 @@ namespace Player
         [SerializeField] private int health = 300;
         [SerializeField] private float durationOfExplosion;
         [SerializeField] private GameObject _explosionGameObject;
+        [Tooltip("Seconds of damage immunity the player gets after an ad has been played")]
+        [SerializeField] private float adImmunitySeconds = 5f;
 
         [Header("Player UI")]
         [SerializeField] TextMeshProUGUI _alertBuffMessage;
@@ -21,6 +23,7 @@ namespace Player
         private bool _isDead;
         private int _damageReduction;
         private Coroutine _alertCoroutine;
+        private float _immuneUntil;
 
         // Start is called before the first frame update
         private void Start()
@@ -28,10 +31,18 @@ namespace Player
             _alertBuffMessage.enabled = false;
             _gameStatus = FindFirstObjectByType<GameStatus>();
             _soundManager = GetComponent<SoundsManager>();
+            // An ad was played right before this game started
+            if (Advertising.ConsumePendingImmunity()) GrantAdImmunity();
+        }
+
+        // Called after an ad, so a tap on the ad can't leave the ship in a bad spot with no time to react
+        public void GrantAdImmunity()
+        {
+            _immuneUntil = Mathf.Max(_immuneUntil, Time.time + adImmunitySeconds);
         }
 
         // Update is called once per frame
-        void Update()
+        private void Update()
         {
             BonusHealth();
         }
@@ -62,6 +73,12 @@ namespace Player
 
         private void HitProcess(DamageDealer damageDealer)
         {
+            // While immune the hit is absorbed without hurting the player
+            if (Time.time < _immuneUntil)
+            {
+                damageDealer.Hit();
+                return;
+            }
             // Defense buffs reduce each hit, but a hit always does at least 1 damage
             health -= Mathf.Max(1, damageDealer.GetDamage() - _damageReduction);
             _soundManager.PlayHitSound();

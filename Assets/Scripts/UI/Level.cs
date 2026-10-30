@@ -44,7 +44,7 @@ namespace UI
 
         public void LoadNextScene()
         {
-            int currentIndexScene = SceneManager.GetActiveScene().buildIndex;
+            var currentIndexScene = SceneManager.GetActiveScene().buildIndex;
             SceneManager.LoadScene(currentIndexScene + 1);
         }
 

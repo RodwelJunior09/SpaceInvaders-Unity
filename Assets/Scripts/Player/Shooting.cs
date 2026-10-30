@@ -22,7 +22,8 @@ namespace Player
         {
             _attackBonus += increaseAmount;
             projectileSpeed += 4;
-            projectFirePeriod += 0.25f;
+            if (projectFirePeriod > 0.1f)
+                projectFirePeriod -= 0.05f;
         }
 
         private IEnumerator ContinuousFire()
