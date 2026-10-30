@@ -4,13 +4,13 @@ using UnityEngine;
 public class HealthDisplay : MonoBehaviour
 {
     private TextMeshProUGUI healthTextDisplay;
-    private Player player;
+    private Player.Player player;
     private int _shownHealth = int.MinValue;
 
     // Start is called before the first frame update
     void Start()
     {
-        player = FindFirstObjectByType<Player>();
+        player = FindFirstObjectByType<Player.Player>();
         healthTextDisplay = GetComponent<TextMeshProUGUI>();
     }
 

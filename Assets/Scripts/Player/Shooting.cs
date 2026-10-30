@@ -1,38 +1,46 @@
-using UnityEngine;
 using System.Collections;
+using UnityEngine;
+using UnityEngine.Serialization;
 
-public class Shooting : MonoBehaviour
+namespace Player
 {
-    [Header("Projectile Config")]
-    [SerializeField] private GameObject _playerLaser;
-    [SerializeField] private float projectileSpeed = 1f;
-    [SerializeField] private float projectFirePeriod = 0.25f;
-
-    [SerializeField] AudioClip _laserAudioClips;
-    [SerializeField, Range(0f, 1f)] private float _laserVolume = 1f;
-
-    private int _attackBonus;
-
-    // Applied to each spawned laser so the prefab asset is never modified
-    public void IncreaseAttack(int increaseAmount)
+    public class Shooting : MonoBehaviour
     {
-        _attackBonus += increaseAmount;
-    }
+        [FormerlySerializedAs("_playerLaser")]
+        [Header("Projectile Config")]
+        [SerializeField] private GameObject playerLaser;
+        [SerializeField] private float projectileSpeed = 1f;
+        [SerializeField] private float projectFirePeriod = 0.25f;
 
-    private IEnumerator ContinousFire()
-    {
-        while (true)
+        [FormerlySerializedAs("_laserAudioClips")] [SerializeField] private AudioClip laserAudioClips;
+        [FormerlySerializedAs("_laserVolume")] [SerializeField, Range(0f, 1f)] private float laserVolume = 1f;
+
+        private int _attackBonus;
+
+        // Applied to each spawned laser so the prefab asset is never modified
+        public void IncreaseAttack(int increaseAmount)
         {
-            var laser = Instantiate(_playerLaser, transform.position, Quaternion.identity);
-            laser.GetComponent<Rigidbody2D>().linearVelocity = new Vector2(0, projectileSpeed);
-            if (_attackBonus > 0) laser.GetComponent<DamageDealer>().IncreaseDamage(_attackBonus);
-            AudioSource.PlayClipAtPoint(_laserAudioClips, Camera.main.transform.position, _laserVolume);
-            yield return new WaitForSeconds(projectFirePeriod);
+            _attackBonus += increaseAmount;
+            projectileSpeed += 4;
+            projectFirePeriod += 0.25f;
         }
-    }
 
-    private void Start()
-    {
-        StartCoroutine(ContinousFire());
+        private IEnumerator ContinuousFire()
+        {
+            while (true)
+            {
+                var laser = Instantiate(playerLaser, transform.position, Quaternion.identity);
+                laser.GetComponent<Rigidbody2D>().linearVelocity = new Vector2(0, projectileSpeed);
+                if (_attackBonus > 0) laser.GetComponent<DamageDealer>().IncreaseDamage(_attackBonus);
+                if (Camera.main)
+                    AudioSource.PlayClipAtPoint(laserAudioClips, Camera.main.transform.position, laserVolume);
+                yield return new WaitForSeconds(projectFirePeriod);
+            }
+        }
+
+        private void Start()
+        {
+            StartCoroutine(ContinuousFire());
+        }
     }
 }

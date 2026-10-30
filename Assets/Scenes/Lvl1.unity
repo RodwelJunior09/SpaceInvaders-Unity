@@ -13,7 +13,7 @@ OcclusionCullingSettings:
 --- !u!104 &2
 RenderSettings:
   m_ObjectHideFlags: 0
-  serializedVersion: 9
+  serializedVersion: 10
   m_Fog: 0
   m_FogColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
   m_FogMode: 3
@@ -38,13 +38,12 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
-  serializedVersion: 12
-  m_GIWorkflowMode: 1
+  serializedVersion: 13
+  m_BakeOnSceneLoad: 0
   m_GISettings:
     serializedVersion: 2
     m_BounceScale: 1
@@ -67,9 +66,6 @@ LightmapSettings:
     m_LightmapParameters: {fileID: 0}
     m_LightmapsBakeMode: 1
     m_TextureCompression: 1
-    m_FinalGather: 0
-    m_FinalGatherFiltering: 1
-    m_FinalGatherRayCount: 256
     m_ReflectionCompression: 2
     m_MixedBakeMode: 2
     m_BakeBackend: 0
@@ -159,13 +155,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 458530552}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &632738558 stripped
 MonoBehaviour:
@@ -202,6 +198,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 941557060}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -212,7 +209,6 @@ Transform:
   - {fileID: 73835341110993496}
   - {fileID: 3651850718339199318}
   m_Father: {fileID: 0}
-  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1046423132
 GameObject:
@@ -243,6 +239,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a78c1281d47070429f340aade3bc0f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  adCooldownSeconds: 120
 --- !u!4 &1046423134
 Transform:
   m_ObjectHideFlags: 0
@@ -250,13 +247,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1046423132}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1160420106
 PrefabInstance:
@@ -355,6 +352,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 9052609718563458856, guid: 306fbbdca29484e8eb0d2790f69258cb,
+        type: 3}
+      propertyPath: health
+      value: 1000
       objectReference: {fileID: 0}
     - target: {fileID: 9052609718563458856, guid: 306fbbdca29484e8eb0d2790f69258cb,
         type: 3}
@@ -546,13 +548,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1955851263}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &73835341110993495
 PrefabInstance:
@@ -1040,91 +1042,91 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6027543457378314856, guid: 596b2f1b555386a4381aa1c574966b7a,
         type: 3}
-      propertyPath: _wavesConfigs.Array.data[5]
+      propertyPath: '_wavesConfigs.Array.data[5]'
       value: 
       objectReference: {fileID: 11400000, guid: 1bec75064126dc94b8668ef240336b9b,
         type: 2}
     - target: {fileID: 6027543457378314856, guid: 596b2f1b555386a4381aa1c574966b7a,
         type: 3}
-      propertyPath: _wavesConfigs.Array.data[6]
+      propertyPath: '_wavesConfigs.Array.data[6]'
       value: 
       objectReference: {fileID: 11400000, guid: 88476203ca33a624080e9efef3ab9656,
         type: 2}
     - target: {fileID: 6027543457378314856, guid: 596b2f1b555386a4381aa1c574966b7a,
         type: 3}
-      propertyPath: _wavesConfigs.Array.data[7]
+      propertyPath: '_wavesConfigs.Array.data[7]'
       value: 
       objectReference: {fileID: 11400000, guid: 3e809393d118ef44db46c1c29235216f,
         type: 2}
     - target: {fileID: 6027543457378314856, guid: 596b2f1b555386a4381aa1c574966b7a,
         type: 3}
-      propertyPath: _wavesConfigs.Array.data[8]
+      propertyPath: '_wavesConfigs.Array.data[8]'
       value: 
       objectReference: {fileID: 11400000, guid: 88476203ca33a624080e9efef3ab9656,
         type: 2}
     - target: {fileID: 6027543457378314856, guid: 596b2f1b555386a4381aa1c574966b7a,
         type: 3}
-      propertyPath: _wavesConfigs.Array.data[9]
+      propertyPath: '_wavesConfigs.Array.data[9]'
       value: 
       objectReference: {fileID: 11400000, guid: 1bec75064126dc94b8668ef240336b9b,
         type: 2}
     - target: {fileID: 6027543457378314856, guid: 596b2f1b555386a4381aa1c574966b7a,
         type: 3}
-      propertyPath: _wavesConfigs.Array.data[10]
+      propertyPath: '_wavesConfigs.Array.data[10]'
       value: 
       objectReference: {fileID: 11400000, guid: f0df4b15877692c42955e2173f373279,
         type: 2}
     - target: {fileID: 6027543457378314856, guid: 596b2f1b555386a4381aa1c574966b7a,
         type: 3}
-      propertyPath: _wavesConfigs.Array.data[11]
+      propertyPath: '_wavesConfigs.Array.data[11]'
       value: 
       objectReference: {fileID: 11400000, guid: b7120f162c3d0eb4da951016e0401b33,
         type: 2}
     - target: {fileID: 6027543457378314856, guid: 596b2f1b555386a4381aa1c574966b7a,
         type: 3}
-      propertyPath: _wavesConfigs.Array.data[12]
+      propertyPath: '_wavesConfigs.Array.data[12]'
       value: 
       objectReference: {fileID: 11400000, guid: f0df4b15877692c42955e2173f373279,
         type: 2}
     - target: {fileID: 6027543457378314856, guid: 596b2f1b555386a4381aa1c574966b7a,
         type: 3}
-      propertyPath: _wavesConfigs.Array.data[13]
+      propertyPath: '_wavesConfigs.Array.data[13]'
       value: 
       objectReference: {fileID: 11400000, guid: 1bec75064126dc94b8668ef240336b9b,
         type: 2}
     - target: {fileID: 6027543457378314856, guid: 596b2f1b555386a4381aa1c574966b7a,
         type: 3}
-      propertyPath: _wavesConfigs.Array.data[14]
+      propertyPath: '_wavesConfigs.Array.data[14]'
       value: 
       objectReference: {fileID: 11400000, guid: b7120f162c3d0eb4da951016e0401b33,
         type: 2}
     - target: {fileID: 6027543457378314856, guid: 596b2f1b555386a4381aa1c574966b7a,
         type: 3}
-      propertyPath: _wavesConfigs.Array.data[15]
+      propertyPath: '_wavesConfigs.Array.data[15]'
       value: 
       objectReference: {fileID: 11400000, guid: 88476203ca33a624080e9efef3ab9656,
         type: 2}
     - target: {fileID: 6027543457378314856, guid: 596b2f1b555386a4381aa1c574966b7a,
         type: 3}
-      propertyPath: _wavesConfigs.Array.data[16]
+      propertyPath: '_wavesConfigs.Array.data[16]'
       value: 
       objectReference: {fileID: 11400000, guid: 1bec75064126dc94b8668ef240336b9b,
         type: 2}
     - target: {fileID: 6027543457378314856, guid: 596b2f1b555386a4381aa1c574966b7a,
         type: 3}
-      propertyPath: _wavesConfigs.Array.data[17]
+      propertyPath: '_wavesConfigs.Array.data[17]'
       value: 
       objectReference: {fileID: 11400000, guid: 3e809393d118ef44db46c1c29235216f,
         type: 2}
     - target: {fileID: 6027543457378314856, guid: 596b2f1b555386a4381aa1c574966b7a,
         type: 3}
-      propertyPath: _wavesConfigs.Array.data[18]
+      propertyPath: '_wavesConfigs.Array.data[18]'
       value: 
       objectReference: {fileID: 11400000, guid: b7120f162c3d0eb4da951016e0401b33,
         type: 2}
     - target: {fileID: 6027543457378314856, guid: 596b2f1b555386a4381aa1c574966b7a,
         type: 3}
-      propertyPath: _wavesConfigs.Array.data[19]
+      propertyPath: '_wavesConfigs.Array.data[19]'
       value: 
       objectReference: {fileID: 11400000, guid: f0df4b15877692c42955e2173f373279,
         type: 2}
@@ -1435,3 +1437,19 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9cde8121237ed4ee291b2a39fa3e6d7e, type: 3}
+--- !u!1660057539 &9223372036854775807
+SceneRoots:
+  m_ObjectHideFlags: 0
+  m_Roots:
+  - {fileID: 409657605202529409}
+  - {fileID: 7242604534625162821}
+  - {fileID: 1590758277}
+  - {fileID: 1160420106}
+  - {fileID: 2318879741038549596}
+  - {fileID: 1877955796}
+  - {fileID: 6027543457360925078}
+  - {fileID: 1955851264}
+  - {fileID: 941557061}
+  - {fileID: 458530553}
+  - {fileID: 1046423134}
+  - {fileID: 5678378046582910653}
