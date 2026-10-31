@@ -21,15 +21,12 @@ namespace Player
             return _isFromEnemy ? enemyDamage : playerDamage;
         }
 
-        // Only call this on spawned instances, never on the prefab asset
-        public void IncreaseDamage(int increaseAmount)
-        {
-            playerDamage += increaseAmount;
-        }
-
         public void Hit()
         {
-            Destroy(gameObject);
+            // An enemy ship that rams the player should die properly (explosion and score), not just vanish
+            var enemy = GetComponent<Enemy>();
+            if (enemy) enemy.Kill();
+            else Destroy(gameObject);
         }
     }
 }

@@ -6,8 +6,8 @@ namespace UI
     public class Advertising : MonoBehaviour, IUnityAdsLoadListener, IUnityAdsShowListener, IUnityAdsInitializationListener
     {
 #if UNITY_IOS
-    const string GAMEID = "5403000";
-    const string INTER_ADS_ID = "Interstitial_iOS";
+        private const string GameID = "5403000";
+        private const string InterAdsID = "Interstitial_iOS";
 #else
         // Android ids are also used in the Editor and on other platforms, so the project always compiles
         private const string GameID = "5403001";
@@ -47,7 +47,8 @@ namespace UI
 
             // Ads can only be loaded once the SDK is initialized
             if (Advertisement.isInitialized) LoadUnityAds();
-            else Advertisement.Initialize(GameID, false, this);
+            // Test ads in the Editor and development builds, so we never click on our own live ads
+            else Advertisement.Initialize(GameID, Debug.isDebugBuild, this);
         }
 
         void LoadUnityAds(){

@@ -88,6 +88,12 @@ public class Enemy : MonoBehaviour
         FindFirstObjectByType<Level>().LoadPlayerWins();
     }
 
+    // Used when the enemy is destroyed by something other than a projectile, like ramming the player
+    public void Kill()
+    {
+        if (!_isDead) Die();
+    }
+
     private void Die()
     {
         // Destroy is deferred, so block a second hit in the same frame from killing us twice
