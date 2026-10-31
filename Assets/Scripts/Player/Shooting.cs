@@ -15,15 +15,14 @@ namespace Player
         [FormerlySerializedAs("_laserAudioClips")] [SerializeField] private AudioClip laserAudioClips;
         [FormerlySerializedAs("_laserVolume")] [SerializeField, Range(0f, 1f)] private float laserVolume = 1f;
 
-        private int _attackBonus;
+        private const float MaxProjectileSpeed = 20f;
+        private const float MinFirePeriod = 0.1f;
 
-        // Applied to each spawned laser so the prefab asset is never modified
+        // Clamped so float rounding or a high starting value can't push past the limits
         public void IncreaseSpeed()
         {
-            if (projectileSpeed < 20)
-                projectileSpeed += 4;
-            if (projectFirePeriod > 0.1f)
-                projectFirePeriod -= 0.05f;
+            projectileSpeed = Mathf.Min(projectileSpeed + 4f, MaxProjectileSpeed);
+            projectFirePeriod = Mathf.Max(projectFirePeriod - 0.05f, MinFirePeriod);
         }
 
         private IEnumerator ContinuousFire()
@@ -32,7 +31,6 @@ namespace Player
             {
                 var laser = Instantiate(playerLaser, transform.position, Quaternion.identity);
                 laser.GetComponent<Rigidbody2D>().linearVelocity = new Vector2(0, projectileSpeed);
-                if (_attackBonus > 0) laser.GetComponent<DamageDealer>().IncreaseDamage(_attackBonus);
                 if (Camera.main)
                     AudioSource.PlayClipAtPoint(laserAudioClips, Camera.main.transform.position, laserVolume);
                 yield return new WaitForSeconds(projectFirePeriod);
